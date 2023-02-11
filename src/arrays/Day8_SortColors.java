@@ -16,28 +16,21 @@ public class Day8_SortColors {
         int low = 0;
         int high = nums.length - 1;
         int mid = 0;
-        int temp = 0;
+        int temp;
         while (mid <= high) {
-            switch (nums[mid]) {
-                case 0: {
-                    temp = nums[low];
-                    nums[low] = nums[mid];
-                    nums[mid] = temp;
-                    low++;
-                    mid++;
-                    break;
-                }
-                case 1: {
-                    mid++;
-                    break;
-                }
-                case 2: {
-                    temp = nums[mid];
-                    nums[mid] = nums[high];
-                    nums[high] = temp;
-                    high--;
-                    break;
-                }
+            if (nums[mid] == 0) {
+                temp = nums[mid];
+                nums[mid] = nums[low];
+                nums[low] = temp;
+                low++;
+                mid++;
+            } else if (nums[mid] == 1) {
+                mid++;
+            } else {
+                temp = nums[mid];
+                nums[mid] = nums[high];
+                nums[high] = temp;
+                high--;
             }
         }
     }
